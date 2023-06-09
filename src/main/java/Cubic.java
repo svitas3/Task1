@@ -152,7 +152,7 @@ public class Cubic {
         cube = temp;
     }
 
-    // случайный поворот слоя кубика
+    // случайный поворот слоев кубика
     public void randomize() {
         for (int i = 0; i < size; i++) {
             this.rotate(i + 1, Math.random() < 0.5);

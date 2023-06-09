@@ -39,7 +39,7 @@ public class CubicTest {
     }
 
     @Test
-    // проверяет возможность случайного поворота слоя
+    // проверяет возможность случайного поворота слоев
     public void testRandomize() {
         Cubic cube = new Cubic(2); // создаем кубик 2x2
         int[][] faceBefore = cube.getFace(4); // получаем состояние четвертой грани перед поворотом
