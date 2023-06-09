@@ -14,7 +14,20 @@ public class Cubic {
         }
     }
 
-    // поворот указанного числа слоев
+    // запрос состояния всего кубика
+    public int[][][] getCube() {
+        int[][][] result = new int[3][3][3];
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                for (int k = 0; k < 3; k++) {
+                    result[i][j][k] = cube[i][j][k];
+                }
+            }
+        }
+        return result;
+    }
+
+    // поворот указанного слоя кубика
     public void rotate(int layer, boolean clockwise) {
         int[][] temp = new int[size][size];
         int index = clockwise ? size - layer : layer - 1;
@@ -43,7 +56,7 @@ public class Cubic {
         }
     }
 
-    // поворот всего кубика
+    // перемешивание кубика
     public void shuffle() {
         int[][][] temp = new int[size][size][size];
         for (int i = 0; i < size; i++) {
@@ -108,7 +121,38 @@ public class Cubic {
         return result;
     }
 
-    // случайная установка состояния кубика
+    // поворот всего кубика
+    public void rotateCube(int direction) {
+        int[][][] temp = new int[3][3][3];
+        if (direction == 0) { // поворот по оси Х
+            for (int i = 0; i < 3; i++) {
+                for (int j = 0; j < 3; j++) {
+                    for (int k = 0; k < 3; k++) {
+                        temp[2 - j][i][k] = cube[i][j][k];
+                    }
+                }
+            }
+        } else if (direction == 1) { // поворот по оси Y
+            for (int i = 0; i < 3; i++) {
+                for (int j = 0; j < 3; j++) {
+                    for (int k = 0; k < 3; k++) {
+                        temp[i][2 - k][j] = cube[i][j][k];
+                    }
+                }
+            }
+        } else if (direction == 2) { // поворот по оси Z
+            for (int i = 0; i < 3; i++) {
+                for (int j = 0; j < 3; j++) {
+                    for (int k = 0; k < 3; k++) {
+                        temp[k][j][2 - i] = cube[i][j][k];
+                    }
+                }
+            }
+        }
+        cube = temp;
+    }
+
+    // случайный поворот слоя кубика
     public void randomize() {
         for (int i = 0; i < size; i++) {
             this.rotate(i + 1, Math.random() < 0.5);

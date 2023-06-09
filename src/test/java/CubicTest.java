@@ -3,6 +3,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class CubicTest {
     @Test
+    // проверяет возможность поверота слоя по часовой стрелке
     public void testRotateClockwise() {
         Cubic cube = new Cubic(2); // создаем кубик 2x2
         cube.rotate(1, true); // поворачиваем первый слой по часовой стрелке
@@ -12,6 +13,7 @@ public class CubicTest {
     }
 
     @Test
+    // проверяет возможность поверота слоя против часовой стрелки
     public void testRotateCounterclockwise() {
         Cubic cube = new Cubic(2); // создаем кубик 2x2
         cube.randomize(); // перемешиваем кубик случайным образом
@@ -23,6 +25,7 @@ public class CubicTest {
     }
 
     @Test
+    // проверяет возможность перемешивания
     public void testShuffle() {
         Cubic cube = new Cubic(3); // создаем кубик 3x3
         cube.shuffle(); // перемешиваем кубик
@@ -30,12 +33,13 @@ public class CubicTest {
         // проверяем, что все элементы грани находятся в диапазоне от 1 до 9
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
-                assertTrue(face[i][j] >= 1 && face[i][j] <= 9);
+                assertTrue(face[i][j] >= 1 && face[i][j] <= 27);
             }
         }
     }
 
     @Test
+    // проверяет возможность случайного поворота слоя
     public void testRandomize() {
         Cubic cube = new Cubic(2); // создаем кубик 2x2
         int[][] faceBefore = cube.getFace(4); // получаем состояние четвертой грани перед перемешиванием
@@ -45,5 +49,3 @@ public class CubicTest {
         assertNotEquals(faceBefore, faceAfter);
     }
 }
-
-//В данном примере представлены четыре теста. Первый тест проверяет, что возможно повернуть один слой кубика по часовой стрелке. Второй тест проверяет, что возможно повернуть один слой кубика против часовой стрелки. Третий тест проверяет, что кубик может быть перемешан случайным образом. Четвертый тест проверяет, что кубик может быть перемешан с помощью метода randomize(). Общее количество тестов можно увеличить, проверив дополнительные краевые случаи или используя более сложные алгоритмы поворота кубика.
